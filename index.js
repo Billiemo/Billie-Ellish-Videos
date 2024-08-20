@@ -16,7 +16,7 @@ app.use((req, res, next) => {
 
 // Handle other routes
 app.get('*', (req, res) => {
-  res.send('Welcome to my website!');
+  res.send('billie eilish !');
 });
 
 module.exports = app;
